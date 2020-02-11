@@ -16,19 +16,28 @@ public class GameManager : MonoBehaviour
     }
     public bool gameEnded = false;
     public bool isPaused = false;
-    public GameObject _pauseMenu;
+    public GameObject _pauseMenu, _win, _lose;
+    public bool win;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
         }
+        if (PlayerHandler.curStamina >= PlayerHandler.maxStamina)
+        {
+            Time.timeScale = 0;
+            //Cursor.lockState = CursorLockMode.None; // lock the mouse cursor
+            Cursor.visible = true;
+            _win.SetActive(true);
+            isPaused = true;
+        }
         if (PlayerHandler.isDead == true)
         {
             Time.timeScale = 0;
             //Cursor.lockState = CursorLockMode.None; // lock the mouse cursor
             Cursor.visible = true;
-            _pauseMenu.SetActive(true);
+            _lose.SetActive(true);
             isPaused = true;
         }
     }

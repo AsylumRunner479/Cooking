@@ -25,6 +25,16 @@ public class FoodHandler : MonoBehaviour
                     Destroy(self);
 
                 }
+                else if (PlayerHandler.item == foodType)
+                {
+                    
+                    player.hand[PlayerHandler.item].SetActive(false);
+                    PlayerHandler.hold = true;
+                    player.hand[5].SetActive(true);
+                    PlayerHandler.item = 5;
+                    Debug.Log(foodType);
+                    Destroy(self);
+                }
             }
             
         }

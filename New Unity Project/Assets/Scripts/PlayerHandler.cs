@@ -8,7 +8,7 @@ public class PlayerHandler : MonoBehaviour
 {
     public static bool isDead = false;
     public float curHealth, maxHealth;
-    public float curStamina, maxStamina;
+    public static float curStamina, maxStamina;
     public Slider healthBar;
     public Slider staminaBar;
     public static bool hold;
@@ -22,9 +22,9 @@ public class PlayerHandler : MonoBehaviour
     private void Start()
     {
         maxHealth = 100f;
-        maxStamina = 10f;
+        maxStamina = 4f;
         curHealth = maxHealth;
-        curStamina = maxStamina;
+        curStamina = 0;
 
         healthBar.value = Mathf.Clamp01(curHealth / maxHealth);
         staminaBar.value = Mathf.Clamp01(curStamina / maxStamina);
@@ -35,17 +35,21 @@ public class PlayerHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        curHealth -= 5*Time.deltaTime;
         if (Input.GetKeyDown("r"))
         {
             if (hold == true)
             {
                 hand[item].SetActive(false);
                 hold = false;
-                Instantiate(food[item], new Vector3(dropZone.transform.position.x, dropZone.transform.position.y, dropZone.transform.position.z), Quaternion.identity);
-                 
+                
+                
+                    Instantiate(food[item], new Vector3(dropZone.transform.position.x, dropZone.transform.position.y, dropZone.transform.position.z), Quaternion.identity);
+                
 
             }
         }
+
         
         if (curHealth / maxHealth != healthBar.value)
         {

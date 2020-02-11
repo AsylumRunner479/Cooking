@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         if (PlayerHandler.isDead == true)
         {
             Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None; // lock the mouse cursor
+            //Cursor.lockState = CursorLockMode.None; // lock the mouse cursor
             Cursor.visible = true;
             _pauseMenu.SetActive(true);
             isPaused = true;
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 1;
             _pauseMenu.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked; // lock the mouse cursor
+            //Cursor.lockState = CursorLockMode.Locked; // lock the mouse cursor
             Cursor.visible = false;
             isPaused = false;
             return;
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None; // lock the mouse cursor
+            //Cursor.lockState = CursorLockMode.None; // lock the mouse cursor
             Cursor.visible = true;
             _pauseMenu.SetActive(true);
             isPaused = true;
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         PlayerHandler.isDead = false;
         Time.timeScale = 1;
         _pauseMenu.SetActive(false);
-        Cursor.lockState = CursorLockMode.None; // lock the mouse cursor
+        //Cursor.lockState = CursorLockMode.None; // lock the mouse cursor
         Cursor.visible = false;
         isPaused = false;
 

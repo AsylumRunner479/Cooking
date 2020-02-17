@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
         //Cursor.lockState = CursorLockMode.None; // lock the mouse cursor
         Cursor.visible = false;
         isPaused = false;
+        PlayerHandler.hold = false;
 
     }
     //

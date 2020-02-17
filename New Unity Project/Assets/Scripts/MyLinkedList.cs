@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class MyLinkedList
 {
-    public Node Header;
+    Node Header;
     Node Current;
+    Node LastNode;
     // Start is called before the first frame update
     public MyLinkedList(GameObject d)
     {
@@ -26,7 +27,8 @@ public class MyLinkedList
     // Update is called once per frame
     public void AddFirst(GameObject d)
     {
-
+        Node newNode = new Node(d);
+        Header = LastNode;
     }
     public void RemoveNext()
     {

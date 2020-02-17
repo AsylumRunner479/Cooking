@@ -30,7 +30,9 @@ public class MyLinkedList
     }
     public void RemoveNext()
     {
-
+        Node tempNode = Current.nextNode;
+        Current.nextNode = Current.nextNode.nextNode;
+        tempNode = null;
     }
    public void MoveToNext()
     {

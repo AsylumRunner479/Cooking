@@ -8,16 +8,47 @@ public class MyLinkedList
     Node Previous;
     Node Current;
     Node LastNode;
+    
     // Start is called before the first frame update
     public MyLinkedList(GameObject d)
     {
         Header = new Node(d);
         Previous = new Node(d);
         Current = Header;
+        LastNode = Header;
     }
     public GameObject GetCurrent()
     {
         return Current.data;
+    }
+    public Node PeekNext()
+    {
+        if (Current.nextNode != null)
+        {
+            return Current.nextNode;
+           
+
+        }
+        else
+        {
+            return Header;
+        }
+        
+    }
+    public Node PeekPrev()
+    {
+        if (Current.nextNode != Header)
+        {
+           
+            return Previous;
+
+
+        }
+        else
+        {
+            return LastNode;
+        }
+
     }
 
     public void Add(GameObject d)
@@ -32,6 +63,8 @@ public class MyLinkedList
         Node newNode = new Node(d);
         newNode.nextNode = Current.nextNode;
         Current.nextNode = newNode;
+        MoveToNext();
+        MoveToNext();
     }
     // Update is called once per frame
     public void AddFirst(GameObject d)
@@ -57,16 +90,29 @@ public class MyLinkedList
     {
         if (Current.nextNode != null)
         {
+            Previous = Current;
             Current = Current.nextNode;
+        }
+        else
+        {
+            Current = Header;
         }
     }
     public void MoveToPrev()
     {
         Previous = Header;
-        while (Previous.nextNode != Current)
+        if (Current != Header)
         {
-            Previous = Previous.nextNode;
+            while (Previous.nextNode != Current)
+            {
+                Previous = Previous.nextNode;
+            }
         }
+        else
+        {
+            Previous = LastNode;
+        }
+        
         Current = Previous;
 
     }

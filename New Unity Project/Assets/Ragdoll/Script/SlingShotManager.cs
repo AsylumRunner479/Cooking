@@ -20,11 +20,11 @@ public class SlingShotManager : MonoBehaviour
         //{
             //launch = false;
         //}      
-        if (self.transform.localPosition.y >= 10)
+        if (self.transform.localPosition.x <= -1)
         {
-            //Destroy(spring1);
-            //Destroy(spring2);
-            //launch = true;
+            Destroy(spring1);
+            Destroy(spring2);
+            launch = true;
         }
         else
         {

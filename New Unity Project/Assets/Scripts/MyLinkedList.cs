@@ -21,6 +21,11 @@ public class MyLinkedList
     {
         return Current.data;
     }
+    public void ResetToHeader()
+    {
+        Current = Header;
+
+    }
     public Node PeekNext()
     {
         if (Current.nextNode != null)
@@ -74,17 +79,35 @@ public class MyLinkedList
     }
     public void RemoveNext()
     {
-        Node tempNode = Current.nextNode;
-        Current.nextNode = Current.nextNode.nextNode;
-        tempNode = null;
+        if (Current.nextNode != null)
+        {
+            Node tempNode = Current.nextNode;
+            Current.nextNode = Current.nextNode.nextNode;
+            tempNode = null;
+        }
+        else
+        {
+            Header.nextNode = Header;
+
+        }
+        
     }
     public void RemovePrev()
     {
-        MoveToNext();
-        MoveToNext();
-        Node tempNode = Current.nextNode;
-        Current.nextNode = Current.nextNode.nextNode;
-        tempNode = null;
+        MoveToPrev();
+        MoveToPrev();
+        if (Current != Header)
+        {
+            Node tempNode = Current.nextNode;
+            Current.nextNode = Current.nextNode.nextNode;
+            tempNode = null;
+        }
+        else
+        {
+            LastNode = null;
+
+        }
+        
     }
     public void MoveToNext()
     {

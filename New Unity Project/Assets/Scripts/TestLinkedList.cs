@@ -21,6 +21,12 @@ public class TestLinkedList : MonoBehaviour
     }
     public void PrintEveryNode(MyLinkedList list)
     {
+        list.ResetToHeader();
+        do
+        {
+            Debug.Log(list.GetCurrent().name);
+            list.MoveToNext();
+        } while (true);
 
     }
     // Update is called once per frame

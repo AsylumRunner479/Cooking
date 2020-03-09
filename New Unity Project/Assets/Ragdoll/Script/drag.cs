@@ -42,6 +42,7 @@ public class drag : MonoBehaviour
             Vector3 mousePositionOffset = targetCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, selectionDistance)) - originalScreenTargetPosition;
             selectedRigidbody.velocity = (originalRigidbodyPos + mousePositionOffset - selectedRigidbody.transform.position) * forceAmount * Time.deltaTime;
         }
+        GetRigidbodyFromMouseClick();
     }
 
     Rigidbody GetRigidbodyFromMouseClick()
@@ -49,6 +50,7 @@ public class drag : MonoBehaviour
         RaycastHit hitInfo = new RaycastHit();
         Ray ray = targetCamera.ScreenPointToRay(Input.mousePosition);
         bool hit = Physics.Raycast(ray, out hitInfo);
+        Debug.DrawRay(ray.origin, ray.direction * 50, Color.blue);
         if (hit)
         {
             if (hitInfo.collider.gameObject.GetComponent<Rigidbody>())
